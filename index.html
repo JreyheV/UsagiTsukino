@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Usagi Tsukino — Profile</title>
+
+    <link
+        rel="preload"
+        href="images/bg1_upscayl.jpg"
+        as="image"
+        type="image/jpeg"
+        fetchpriority="high"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        @font-face {
+            font-family: "Gome Pixel";
+            src: url("shrifts/gome-font/GomePixel-DYJX1.otf") format("opentype");
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="intro-screen" id="introScreen" aria-label="Intro screen">
+        <div class="intro-content">
+            <div class="intro-text-wrap">
+                <span class="intro-title" aria-label="welcome /ᐠ - ˕ -マᶻ 𝗓 𐰁"></span>
+                <span class="intro-subtext">click to enter</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="background">
+
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+
+    </div>
+
+    <audio
+        id="bgAudio"
+        preload="auto"
+        loop
+        src="music/依存.mp3"
+        aria-label="Background music"
+    ></audio>
+
+
+    <!-- =========================
+         FLOORS
+    ========================== -->
+
+    <main class="sections-container">
+
+
+        <!-- =====================
+             FLOOR 1 — PROFILE
+        ====================== -->
+
+        <section class="panel panel-1">
+
+            <div class="panel-content">
+
+                <div class="audio-control" id="audioControl">
+                    <button
+                        class="audio-toggle"
+                        id="audioToggle"
+                        type="button"
+                        aria-label="Toggle sound"
+                        title="Toggle sound"
+                    >
+                        🔊
+                    </button>
+
+                    <input
+                        id="audioSlider"
+                        class="audio-slider"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value="0.35"
+                        aria-label="Volume"
+                    >
+                </div>
+
+                <div
+                    class="third-page-player top-player"
+                    aria-label="Music player"
+                    style="background: rgba(14, 14, 18, 0.22); border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);"
+                >
+
+                    <div class="music-player-inner">
+
+                        <img src="images/album.jpg" alt="Track cover" class="music-cover">
+
+                        <div class="music-player-content">
+
+                            <div class="music-meta">
+                                <span class="music-title">依存</span>
+                                <span class="music-artist">Travis Chobit</span>
+                            </div>
+
+                            <input
+                                type="range"
+                                min="0"
+                                max="100"
+                                value="0"
+                                class="music-slider"
+                                aria-label="Track progress"
+                            >
+
+                            <div class="music-times">
+                                <span class="music-current">0:00</span>
+                                <span class="music-duration">0:00</span>
+                            </div>
+
+                        </div>
+
+                        <div class="music-controls" aria-label="Player controls">
+                            <button class="music-control" type="button" data-action="prev" aria-label="Previous track">⏮</button>
+                            <button class="music-control music-control-primary" type="button" data-action="play" aria-label="Play or pause">▶</button>
+                            <button class="music-control" type="button" data-action="next" aria-label="Next track">⏭</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <section class="profile-card">
+
+                    <!-- PROFILE TOP -->
+
+                    <div class="profile-top">
+
+                        <div class="avatar-wrapper">
+
+                            <img
+                                src="images/avatar.jpg"
+                                alt="Avatar"
+                                class="avatar"
+                            >
+
+                            <span class="online"></span>
+
+                        </div>
+
+
+                        <div class="profile-info">
+
+                            <div class="name-row">
+
+                                <h1 id="nameTyping">Usagi Tsukino</h1>
+
+                                <span class="verified">
+                                    ✓
+                                </span>
+
+                            </div>
+
+
+                            <p class="username">
+                                @usagiTsukino
+                            </p>
+
+
+                            <p
+                                class="description"
+                                id="typingText"
+                            ></p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DIVIDER -->
+
+                    <div class="divider"></div>
+
+
+
+                    <!-- LINKS -->
+
+                    <div class="links">
+
+
+                        <a
+                            href="https://discord.com/users/11507942670532813"
+                            class="link-card"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Discord"
+                        >
+
+                            <div class="link-icon">
+
+                                <img
+                                    src="images/dc.png"
+                                    alt="Discord"
+                                >
+
+                            </div>
+
+                        </a>
+
+
+
+                        <a
+                            href="https://t.me/UsagiTsukin00913"
+                            class="link-card"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Telegram"
+                        >
+
+                            <div class="link-icon">
+
+                                <img
+                                    src="images/tg.png"
+                                    alt="Telegram"
+                                >
+
+                            </div>
+
+                        </a>
+
+
+
+                        <a
+                            href="https://steamcommunity.com/id/ifulfulashka"
+                            class="link-card"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Steam"
+                        >
+
+                            <div class="link-icon">
+
+                                <img
+                                    src="images/steam.png"
+                                    alt="Steam"
+                                >
+
+                            </div>
+
+                        </a>
+
+
+
+                        <a
+                            href="https://clck.su/cDVSB"
+                            class="link-card"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="League of Legends"
+                        >
+
+                            <div class="link-icon">
+
+                                <img
+                                    src="images/lol.png"
+                                    alt="League of Legends"
+                                >
+
+                            </div>
+
+                        </a>
+
+
+                    </div>
+
+
+
+                    <!-- FOOTER -->
+
+                    <div class="profile-footer">
+
+                        <div class="stat">
+
+                            <span
+                                class="stat-value"
+                                id="views"
+                            >
+                                0
+                            </span>
+
+                            <span class="stat-name">
+                                views
+                            </span>
+
+                        </div>
+
+
+                        <div class="footer-line"></div>
+
+
+                        <div class="stat">
+
+                            <span class="stat-value">
+                                2026
+                            </span>
+
+                            <span class="stat-name">
+                                since
+                            </span>
+
+                        </div>
+
+
+                        <div class="footer-line"></div>
+
+
+                        <div class="stat">
+
+                            <span class="status-dot"></span>
+
+                            <span class="stat-name">
+                                online
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- Gallery Label and Arrow -->
+                <div class="gallery-section">
+                    <span class="gallery-label">
+                        Cat Gallery
+                    </span>
+
+                    <div class="scroll-arrow">
+                        ↓
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================
+             FLOOR 2
+        ====================== -->
+
+        <section class="panel panel-2">
+
+            <div class="panel-content">
+
+                <div class="gallery-container">
+
+                    <div class="gallery-header">
+                        <span class="gallery-heading">My favorite kitties</span>
+                    </div>
+
+                    <div class="gallery-frame">
+                        <img src="images/dog.jpg" alt="Dog">
+                    </div>
+
+                    <div class="gallery-frame">
+                        <img src="images/cat 1.jpg" alt="Cat 1">
+                    </div>
+
+                    <div class="gallery-frame">
+                        <img src="images/cat 2.jpg" alt="Cat 2">
+                    </div>
+
+                    <div class="gallery-frame">
+                        <img src="images/cat 3.jpg" alt="Cat 3">
+                    </div>
+
+                    <div class="gallery-frame">
+                        <img src="images/cat 4.jpg" alt="Cat 4">
+                    </div>
+
+                    <div class="gallery-frame">
+                        <img src="images/cat 5.jpg" alt="Cat 5">
+                    </div>
+
+                    <div class="gallery-frame">
+                        <img src="images/cat 6.jpg" alt="Cat 6">
+                    </div>
+
+                    <div class="gallery-frame">
+                        <img src="images/cat 7.jpg" alt="Cat 7">
+                    </div>
+
+                </div>
+
+                <div class="gallery-section">
+                    <span class="gallery-label">
+                        Home Server
+                    </span>
+
+                    <div class="scroll-arrow">
+                        ↓
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================
+             FLOOR 3
+        ====================== -->
+
+        <section class="panel panel-3">
+
+            <div class="panel-content">
+
+                <div class="server-invite-card">
+
+                    <div class="server-invite-content">
+
+                        <span class="server-tag">
+                            Discord server
+                        </span>
+
+                        <div class="server-avatar" aria-label="Server avatar">
+                            <img src="images/hdgg.png" alt="Happy Disco Family" class="server-avatar-image">
+                        </div>
+
+                        <h1 class="server-title" aria-label="Happy Disco Family with bow">
+                            <span class="title-char" style="--i: 1">H</span>
+                            <span class="title-char" style="--i: 2">a</span>
+                            <span class="title-char" style="--i: 3">p</span>
+                            <span class="title-char" style="--i: 4">p</span>
+                            <span class="title-char" style="--i: 5">y</span>
+                            <span class="title-space"> </span>
+                            <span class="title-char" style="--i: 6">D</span>
+                            <span class="title-char" style="--i: 7">i</span>
+                            <span class="title-char" style="--i: 8">s</span>
+                            <span class="title-char" style="--i: 9">c</span>
+                            <span class="title-char" style="--i: 10">o</span>
+                            <span class="title-space"> </span>
+                            <span class="title-char" style="--i: 11">F</span>
+                            <span class="title-char" style="--i: 12">a</span>
+                            <span class="title-char" style="--i: 13">m</span>
+                            <span class="title-char" style="--i: 14">i</span>
+                            <span class="title-char" style="--i: 15">l</span>
+                            <span class="title-char" style="--i: 16">y</span>
+                            <span class="title-bow" style="--i: 17" aria-hidden="true">🎀</span>
+                        </h1>
+
+                        <p>
+                            Жители низшего интернета.
+                        </p>
+
+                        <a
+                            href="https://discord.gg/SaSBxxsf3R"
+                            class="discord-button"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Присоединиться
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="third-page-copyright">© Jreyhe</div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         SECTION NAVIGATION
+    ========================== -->
+
+    <nav class="section-nav">
+
+
+        <button
+            class="section-btn section-up"
+            aria-label="Previous section"
+        >
+            ↑
+        </button>
+
+
+        <div class="section-indicator">
+
+            <span
+                class="section-number"
+            >
+                1
+            </span>
+
+            <span class="section-separator">
+                /
+            </span>
+
+            <span
+                class="section-total"
+            >
+                3
+            </span>
+
+        </div>
+
+
+        <button
+            class="section-btn section-down"
+            aria-label="Next section"
+        >
+            ↓
+        </button>
+
+
+    </nav>
+
+
+
+    <!-- =========================
+         IMAGE MODAL
+    ========================== -->
+
+    <div class="image-modal" id="imageModal">
+
+        <div class="modal-content">
+
+            <img
+                id="modalImage"
+                src=""
+                alt="Full view"
+            >
+
+        </div>
+
+        <button
+            class="modal-close"
+            aria-label="Close"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+    <div class="frog-walk" aria-label="Лягушка"> 
+    <div class="frog"> 
+        <div class="frog-eye left"></div> 
+        <div class="frog-eye right"></div> 
+        <div class="frog-body"></div> 
+        <div class="frog-leg left"></div> 
+        <div class="frog-leg right"></div> 
+    </div> 
+</div>
+
+</body>
+
+</html>
