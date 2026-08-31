@@ -144,6 +144,19 @@ document.addEventListener("DOMContentLoaded", () => {
         updatePlayerUI();
     }
 
+    const applyMobileVisualState = () => {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        document.body.classList.toggle("mobile-layout", isMobile);
+
+        const mobilePlayer = document.querySelector(".third-page-player.top-player");
+        if (mobilePlayer) {
+            mobilePlayer.style.display = isMobile ? "none" : "";
+        }
+    };
+
+    applyMobileVisualState();
+    window.addEventListener("resize", applyMobileVisualState);
+
     const introScreen = document.getElementById("introScreen");
 
     if (introScreen) {
@@ -637,18 +650,13 @@ document.addEventListener("DOMContentLoaded", () => {
        ПРОСТАЯ СИСТЕМА БЛОКОВ НА ОДНОЙ СТРАНИЦЕ
     ===================================================== */
 
-    const sectionButtons = {
-        up: document.querySelector(".section-up"),
-        down: document.querySelector(".section-down")
-    };
-
-    const sectionNumberEl = document.querySelector(".section-number");
-    const sectionTotalEl = document.querySelector(".section-total");
+    const sectionDots = Array.from(document.querySelectorAll(".section-dot"));
     const sections = Array.from(document.querySelectorAll(".panel"));
     const playerEl = document.querySelector(".third-page-player.top-player");
 
     let currentSection = 0;
     let isTransitioning = false;
+    let transitionTarget = 0;
 
     function updatePlayerVisibility() {
         if (!playerEl) return;
@@ -659,21 +667,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateSectionNav() {
-        if (!sectionNumberEl || !sectionTotalEl) return;
-
-        sectionNumberEl.textContent = String(currentSection + 1);
-        sectionTotalEl.textContent = String(sections.length);
-
-        if (sectionButtons.up) {
-            sectionButtons.up.disabled = currentSection === 0;
-        }
-
-        if (sectionButtons.down) {
-            sectionButtons.down.disabled = currentSection === sections.length - 1;
-        }
+        sectionDots.forEach((dot, index) => {
+            const isActive = index === currentSection;
+            dot.classList.toggle("active", isActive);
+            dot.setAttribute("aria-current", isActive ? "true" : "false");
+        });
     }
 
     function updateActiveSection(index) {
+        if (index < 0 || index >= sections.length || index === currentSection) return;
+
         currentSection = index;
 
         sections.forEach((section, sectionIndex) => {
@@ -684,10 +687,36 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSectionNav();
     }
 
+    function finishTransitionIfReachedTarget() {
+        const targetSectionEl = sections[transitionTarget];
+        if (!targetSectionEl) {
+            isTransitioning = false;
+            return;
+        }
+
+        const rect = targetSectionEl.getBoundingClientRect();
+        const isTargetInView = Math.abs(rect.top) <= 18 || Math.abs(rect.bottom - window.innerHeight) <= 18;
+
+        if (isTargetInView) {
+            isTransitioning = false;
+            currentSection = transitionTarget;
+            updatePlayerVisibility();
+            updateSectionNav();
+            sections.forEach((section, sectionIndex) => {
+                section.classList.toggle("active", sectionIndex === currentSection);
+            });
+            return;
+        }
+
+        requestAnimationFrame(finishTransitionIfReachedTarget);
+    }
+
     function goToSection(index) {
         if (isTransitioning || index < 0 || index >= sections.length) return;
+        if (index === currentSection) return;
 
         isTransitioning = true;
+        transitionTarget = index;
 
         const targetSection = sections[index];
         targetSection.scrollIntoView({
@@ -695,26 +724,26 @@ document.addEventListener("DOMContentLoaded", () => {
             block: "start"
         });
 
-        updateActiveSection(index);
-
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 650);
-    }
-
-    if (sectionButtons.up) {
-        sectionButtons.up.addEventListener("click", () => {
-            goToSection(currentSection - 1);
+        currentSection = index;
+        updatePlayerVisibility();
+        updateSectionNav();
+        sections.forEach((section, sectionIndex) => {
+            section.classList.toggle("active", sectionIndex === index);
         });
+
+        requestAnimationFrame(finishTransitionIfReachedTarget);
     }
 
-    if (sectionButtons.down) {
-        sectionButtons.down.addEventListener("click", () => {
-            goToSection(currentSection + 1);
+    sectionDots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+            const nextIndex = Number(dot.dataset.index);
+            goToSection(nextIndex);
         });
-    }
+    });
 
     const observer = new IntersectionObserver((entries) => {
+        if (isTransitioning) return;
+
         const visibleEntries = entries
             .filter(entry => entry.isIntersecting)
             .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
@@ -723,7 +752,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const visibleSection = visibleEntries[0].target;
             const nextIndex = sections.indexOf(visibleSection);
 
-            if (nextIndex !== -1) {
+            if (nextIndex !== -1 && nextIndex !== currentSection) {
                 updateActiveSection(nextIndex);
             }
         }
@@ -735,6 +764,11 @@ document.addEventListener("DOMContentLoaded", () => {
     updateActiveSection(0);
 
     document.addEventListener("wheel", (event) => {
+        if (isTransitioning) {
+            event.preventDefault();
+            return;
+        }
+
         if (Math.abs(event.deltaY) < 12) return;
 
         event.preventDefault();
@@ -747,6 +781,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: false });
 
     document.addEventListener("keydown", (event) => {
+        if (isTransitioning) return;
+
         if (event.key === "ArrowDown" || event.key === "PageDown") {
             event.preventDefault();
             goToSection(currentSection + 1);

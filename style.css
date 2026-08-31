@@ -42,6 +42,330 @@ body {
         0 0 18px rgba(0, 0, 0, 0.3);
 }
 
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+        min-height: 100dvh;
+        margin: 0;
+        border-top: none;
+        border-bottom: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    body::before,
+    body::after {
+        display: none;
+    }
+
+    body {
+        background: rgba(0, 0, 0, 0.88);
+    }
+
+    body.mobile-layout {
+        background: rgba(0, 0, 0, 0.88);
+    }
+
+    .panel {
+        padding: 16px 14px;
+    }
+
+    .panel-content {
+        min-height: 100dvh;
+        gap: 12px;
+    }
+
+    .audio-control {
+        top: 12px;
+        left: 12px;
+        gap: 8px;
+    }
+
+    .audio-toggle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .audio-control:hover .audio-slider,
+    .audio-control:focus-within .audio-slider {
+        width: 92px;
+        max-width: 92px;
+    }
+
+    .music-player-inner {
+        gap: 10px;
+    }
+
+    .music-cover {
+        width: 58px;
+        height: 58px;
+    }
+
+    .music-meta {
+        min-height: 42px;
+        margin-bottom: 6px;
+    }
+
+    .music-title {
+        font-size: 20px !important;
+    }
+
+    .music-artist {
+        font-size: 12px !important;
+        letter-spacing: 0.08em;
+    }
+
+    .music-controls {
+        gap: 6px;
+        margin-left: 0;
+    }
+
+    .music-control {
+        width: 34px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .music-control-primary {
+        width: 38px;
+        height: 38px;
+    }
+
+    .profile-card {
+        width: min(100%, 420px);
+        max-width: 100%;
+        padding: 18px 16px 20px;
+        border-radius: 18px;
+        max-height: none;
+        overflow: visible;
+        transform: none !important;
+    }
+
+    .profile-top {
+        align-items: center;
+        gap: 14px;
+    }
+
+    .avatar {
+        width: 110px;
+        height: 110px;
+    }
+
+    .name-row h1 {
+        font-size: clamp(22px, 6vw, 30px);
+    }
+
+    .username {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .description {
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+
+    .links {
+        gap: 6px;
+    }
+
+    .link-card {
+        min-height: 42px;
+        max-width: 52px;
+        padding: 6px;
+        border-radius: 10px;
+    }
+
+    .link-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    .profile-footer {
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+    }
+
+    .stat {
+        padding: 6px 10px;
+    }
+
+    .section-nav {
+        display: none !important;
+    }
+
+    .gallery-section {
+        position: static;
+        transform: none;
+        margin-top: 8px;
+        gap: 2px;
+        animation: none;
+    }
+
+    .gallery-label {
+        font-size: 12px;
+        letter-spacing: 1.2px;
+    }
+
+    .scroll-arrow {
+        font-size: 24px;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 12px;
+        padding: 54px 8px 0;
+        max-width: 540px;
+    }
+
+    .gallery-header {
+        top: 0;
+        width: calc(100% - 16px);
+    }
+
+    .gallery-heading {
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        padding: 8px 12px;
+    }
+
+    .server-invite-card {
+        width: min(100%, 460px);
+        padding: 20px 16px 18px;
+        border-radius: 22px;
+    }
+
+    .server-avatar {
+        width: 74px;
+        height: 74px;
+    }
+
+    .server-title {
+        font-size: clamp(22px, 7vw, 34px);
+    }
+
+    .server-invite-content p {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .discord-button {
+        width: min(100%, 200px);
+        padding: 12px 18px;
+    }
+
+    .third-page-copyright {
+        right: 14px;
+        bottom: 14px;
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    .frog-walk {
+        width: 44px;
+        height: 30px;
+        left: 12px;
+        top: auto;
+        bottom: calc(72px + env(safe-area-inset-bottom));
+    }
+
+    .frog {
+        width: 44px;
+        height: 30px;
+    }
+
+    .frog-body {
+        left: 10px;
+        width: 24px;
+        height: 16px;
+    }
+
+    .frog-eye.left {
+        left: 14px;
+    }
+
+    .frog-eye.right {
+        left: 24px;
+    }
+
+    .frog-leg.left {
+        left: 12px;
+    }
+
+    .frog-leg.right {
+        left: 24px;
+    }
+}
+
+@media (max-width: 420px) {
+    .panel {
+        padding: 12px 10px;
+    }
+
+    .panel-content {
+        gap: 10px;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        gap: 10px;
+        padding-top: 48px;
+    }
+
+    .gallery-header {
+        width: calc(100% - 8px);
+    }
+
+    .gallery-heading {
+        font-size: 12px;
+        letter-spacing: 0.06em;
+    }
+
+    .music-player-inner {
+        gap: 8px;
+    }
+
+    .music-cover {
+        width: 52px;
+        height: 52px;
+    }
+
+    .music-times {
+        font-size: 8px;
+    }
+
+    .server-avatar {
+        width: 68px;
+        height: 68px;
+    }
+
+    .server-invite-card {
+        padding: 18px 14px 16px;
+    }
+
+    .audio-control {
+        top: 10px;
+        left: 10px;
+    }
+
+    .section-nav {
+        bottom: 14px;
+        gap: 8px;
+    }
+
+    .section-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+    }
+
+    .section-indicator {
+        min-width: 44px;
+        padding: 5px 7px;
+    }
+}
+
 
 
 
@@ -1092,8 +1416,8 @@ body::after {
 
 .music-control:hover {
     transform: translateY(-1px);
-    background: #171717;
-    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .music-control-primary {
@@ -1103,6 +1427,13 @@ body::after {
     border-color: rgba(255, 255, 255, 0.2);
     color: #050505;
     box-shadow: 0 0 18px rgba(255, 255, 255, 0.1);
+}
+
+.music-control-primary:hover {
+    background: #ffffff;
+    border-color: rgba(255, 255, 255, 0.28);
+    color: #050505;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
 }
 
 @keyframes secondFloorAppear {
@@ -1150,109 +1481,53 @@ body::after {
 }
 
 
-.section-btn {
+.section-dot {
 
-    width: 42px;
-    height: 42px;
+    width: 12px;
+    height: 12px;
 
-    border: 1px solid rgba(255, 255, 255, 0.14);
-
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: 50%;
 
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(255, 255, 255, 0.14);
 
-    backdrop-filter: blur(15px);
-
-    color: #ffffff;
-
-    font-size: 18px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     cursor: pointer;
 
     transition:
-        background 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.25s ease,
-        opacity 0.25s ease;
+        background 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.28s ease,
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.28s ease,
+        width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.28s ease;
+
+    will-change: transform, width, height, background, box-shadow;
 
 }
 
 
-.section-btn:hover {
+.section-dot:hover {
 
-    background: rgba(255, 255, 255, 0.08);
-
-    border-color: rgba(255, 255, 255, 0.35);
-
+    background: rgba(255, 255, 255, 0.26);
+    border-color: rgba(255, 255, 255, 0.6);
     transform: scale(1.08);
 
 }
 
 
-.section-btn:disabled {
+.section-dot.active {
 
-    opacity: 0.2;
-
-    cursor: default;
-
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.28);
     transform: scale(1);
-
-}
-
-
-.section-indicator {
-
-    min-width: 55px;
-
-    padding: 8px 10px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 4px;
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    border-radius: 10px;
-
-    background: rgba(0, 0, 0, 0.4);
-
-    backdrop-filter: blur(15px);
-
-    color: #ffffff;
-
-    font-size: 11px;
-
-}
-
-
-.section-number {
-
-    color: #ffffff;
-
-    font-weight: 600;
-
-}
-
-
-.section-separator {
-
-    color: #444444;
-
-}
-
-
-.section-total {
-
-    color: #666666;
 
 }
 
@@ -1787,13 +2062,17 @@ body::after {
 .link-card:hover {
 
     background:
-        rgba(255, 255, 255, 0.055);
+        rgba(0, 0, 0, 0.72);
 
     border-color:
-        rgba(255, 255, 255, 0.11);
+        rgba(255, 180, 214, 0.6);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 180, 214, 0.18),
+        0 0 18px rgba(255, 184, 215, 0.18);
 
     transform:
-        translateY(-2px);
+        translateY(-2px) scale(1.04);
 
 }
 
@@ -2003,89 +2282,6 @@ body::after {
    BOTTOM TEXT
 ========================= */
 
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 600px) {
-
-
-    .panel {
-
-        padding: 15px;
-
-    }
-
-
-    .profile-card {
-
-        padding: 22px;
-
-        border-radius: 20px;
-
-    }
-
-
-    .profile-top {
-
-        align-items: flex-start;
-
-        gap: 16px;
-
-    }
-
-
-    .avatar {
-
-        width: 78px;
-        height: 78px;
-
-    }
-
-
-    .online {
-
-        width: 14px;
-        height: 14px;
-
-        right: 2px;
-        bottom: 3px;
-
-        border-width: 3px;
-
-    }
-
-
-    .name-row h1 {
-
-        font-size: 25px;
-
-    }
-
-
-    .description {
-
-        font-size: 13px;
-
-    }
-
-
-    .profile-footer {
-
-        gap: 13px;
-
-    }
-
-
-
-
-    .second-floor h2 {
-
-        font-size: 32px;
-
-    }
-
-}
 
 
 .frog-walk {
@@ -2185,5 +2381,12 @@ body::after {
 
     100% {
         transform: rotate(-18deg);
+    }
+}
+
+@media (max-width: 768px) {
+    body.mobile-layout .top-player.third-page-player,
+    body.mobile-layout .top-player.third-page-player.is-hidden {
+        display: none !important;
     }
 }
