@@ -204,12 +204,17 @@ body {
     }
 
     .gallery-label {
-        font-size: 12px;
-        letter-spacing: 1.2px;
+        display: none !important;
     }
 
     .scroll-arrow {
-        font-size: 24px;
+        display: none !important;
+    }
+
+    .panel-2 .gallery-section--server,
+    .panel-2 .gallery-section--server .gallery-label,
+    .panel-2 .gallery-section--server .scroll-arrow {
+        display: none !important;
     }
 
     .gallery-container {
