@@ -653,6 +653,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sectionDots = Array.from(document.querySelectorAll(".section-dot"));
     const sections = Array.from(document.querySelectorAll(".panel"));
     const playerEl = document.querySelector(".third-page-player.top-player");
+    const isMobileViewport = () => window.matchMedia("(max-width: 768px)").matches;
 
     let currentSection = 0;
     let isTransitioning = false;
@@ -712,6 +713,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function goToSection(index) {
+        if (isMobileViewport()) return;
         if (isTransitioning || index < 0 || index >= sections.length) return;
         if (index === currentSection) return;
 
@@ -764,6 +766,8 @@ document.addEventListener("DOMContentLoaded", () => {
     updateActiveSection(0);
 
     document.addEventListener("wheel", (event) => {
+        if (isMobileViewport()) return;
+
         if (isTransitioning) {
             event.preventDefault();
             return;
@@ -781,7 +785,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: false });
 
     document.addEventListener("keydown", (event) => {
-        if (isTransitioning) return;
+        if (isMobileViewport() || isTransitioning) return;
 
         if (event.key === "ArrowDown" || event.key === "PageDown") {
             event.preventDefault();
@@ -798,10 +802,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let touchEndY = 0;
 
     document.addEventListener("touchstart", (event) => {
+        if (isMobileViewport()) return;
         touchStartY = event.touches[0].clientY;
     }, { passive: true });
 
     document.addEventListener("touchend", (event) => {
+        if (isMobileViewport()) return;
         touchEndY = event.changedTouches[0].clientY;
         const difference = touchStartY - touchEndY;
 
